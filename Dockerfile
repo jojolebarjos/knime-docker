@@ -1,7 +1,8 @@
 FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && \
+RUN \
+    apt-get update && \
     apt-get install -y \
         xpra \
         xfce4 \
@@ -18,6 +19,13 @@ RUN \
     mkdir -p /opt/knime && \
     tar -xzf /tmp/knime.tar.gz -C /opt/knime --strip-components=1 && \
     rm /tmp/knime.tar.gz
+
+RUN \
+    useradd -m -U -s /bin/bash user
+
+USER user
+
+WORKDIR /home/user
 
 EXPOSE 14500
 
