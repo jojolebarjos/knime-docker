@@ -3,14 +3,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN \
     apt-get update && \
-    apt-get install -y \
+    apt-get install --fix-missing -y \
         xpra \
         xfce4 \
         xserver-xorg-video-dummy \
         xauth \
         wget \
         ca-certificates && \
-    apt-get install -y \
+    apt-get install --fix-missing -y \
         xfce4-terminal && \
     rm -rf /var/lib/apt/lists/*
 
