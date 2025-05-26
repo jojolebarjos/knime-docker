@@ -14,7 +14,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN \
-    wget https://download.knime.org/analytics-platform/linux/knime_4.7.6.linux.gtk.x86_64.tar.gz -O /tmp/knime.tar.gz && \
+    wget https://download.knime.org/analytics-platform/linux/knime_5.4.4.linux.gtk.x86_64.tar.gz -O /tmp/knime.tar.gz && \
     mkdir -p /opt/knime && \
     tar -xzf /tmp/knime.tar.gz -C /opt/knime --strip-components=1 && \
     rm /tmp/knime.tar.gz
