@@ -13,7 +13,7 @@ Similar, but outdated, initiatives:
  * https://hub.docker.com/r/openkbs/knime-docker
 
 
-## Getting started
+## Getting started using Docker
 
 The current solution is based on [Xpra](https://github.com/Xpra-org/xpra), exposing a Web remote desktop session.
 
@@ -26,4 +26,21 @@ Connect to `0.0.0.0:14500` and run:
 
 ```sh
 /opt/knime/knime
+```
+
+
+## Getting started using Renku
+
+...
+
+```
+Container image: ghcr.io/jojolebarjos/knime-docker:main
+Default URL: /
+Port: 14500
+Mount Directory: /home/jovyan/work
+Working Directory: /home/jovyan/work
+UID: 1000
+GID: 1000
+Command ENTRYPOINT: ["sh", "-c"]
+Command Arguments CMD: ["xpra", "seamless", "--start=xterm", "--ssl=no", "--http=yes", "--daemon=no", "--bind-tcp=0.0.0.0:14500", "--systemd-run=no", "--no-audio", "--webcam=no", "--printing=no", "--clipboard=yes", "--clipboard-direction=yes", "--exit-with-children=no"]
 ```
