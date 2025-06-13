@@ -1,21 +1,22 @@
-FROM ubuntu:22.04
+FROM ghcr.io/swissdatasciencecenter/renku-frontend-buildpacks/base-image:0.0.6
 
-ENV DEBIAN_FRONTEND=noninteractive
+ARG DISTRO="jammy"
+ARG REPO="xpra"
+
+USER root
 
 RUN apt-get update && \
-    apt-get install -y --fix-missing wget apt-transport-https ca-certificates software-properties-common && \
+    apt-get install -y apt-transport-https ca-certificates software-properties-common && \
     wget -O "/usr/share/keyrings/xpra.asc" https://xpra.org/xpra.asc && \
-    wget -O "/etc/apt/sources.list.d/xpra.sources" https://raw.githubusercontent.com/Xpra-org/xpra/master/packaging/repos/jammy/xpra.sources && \
+    wget -O "/etc/apt/sources.list.d/xpra.sources" https://raw.githubusercontent.com/Xpra-org/xpra/master/packaging/repos/$DISTRO/$REPO.sources && \
     apt-get update && \
-    apt-get install -y --fix-missing xpra && \
-    apt-get install -y --fix-missing xfce4 xfce4-goodies
+    apt-get install -y xpra && \
+    apt-get install -y xfce4 xfce4-goodies
 
-COPY ./xpra.conf /etc/xpra/xpra.conf
+USER renku
 
-RUN useradd -m -s /bin/bash user
-USER user
-WORKDIR /home/user
+RUN wget https://download.knime.org/analytics-platform/linux/knime_5.4.4.linux.gtk.x86_64.tar.gz -O $HOME/knime.tar.gz && \
+    mkdir -p $HOME/knime && \
+    tar -xzf $HOME/knime.tar.gz -C $HOME/knime --strip-components=1
 
-EXPOSE 14500
-
-CMD ["xpra", "seamless", "--daemon=no", "--no-audio"]
+CMD ["xpra", "seamless", "--start=xterm", "--ssl=no", "--http=yes", "--daemon=no", "--bind-tcp=0.0.0.0:14500", "--systemd-run=no", "--no-audio", "--webcam=no", "--printing=no", "--clipboard=yes", "--clipboard-direction=yes", "--exit-with-children=no"]
