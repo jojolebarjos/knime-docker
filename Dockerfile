@@ -19,9 +19,9 @@ RUN apt install -y debian-keyring debian-archive-keyring apt-transport-https cur
 COPY ./xpra.conf /etc/xpra/xpra.conf
 COPY ./Caddyfile /etc/caddy/Caddyfile
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ./background.png /usr/share/xpra/www/background.png
 
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
 
 RUN useradd -m -s /bin/bash user
 USER user
