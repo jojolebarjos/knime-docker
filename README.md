@@ -34,13 +34,13 @@ Connect to `0.0.0.0:14500` and run:
 ...
 
 ```
-Container image: ghcr.io/jojolebarjos/knime-docker:main
+Container image: ghcr.io/jojolebarjos/knime-docker:caddy
 Default URL: /
-Port: 14500
-Mount Directory: /home/jovyan/work
-Working Directory: /home/jovyan/work
-UID: 1000
-GID: 1000
-Command ENTRYPOINT: ["sh", "-c"]
-Command Arguments CMD: ["xpra", "seamless", "--start=xterm", "--ssl=no", "--http=yes", "--daemon=no", "--bind-tcp=0.0.0.0:14500", "--systemd-run=no", "--no-audio", "--webcam=no", "--printing=no", "--clipboard=yes", "--clipboard-direction=yes", "--exit-with-children=no"]
+Port: 8888
+Mount Directory:
+Working Directory:
+UID:
+GID:
+Command ENTRYPOINT:
+Command Arguments CMD:
 ```
