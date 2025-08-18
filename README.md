@@ -34,9 +34,9 @@ Connect to `0.0.0.0:14500` and run:
 ...
 
 ```
-Container image: ghcr.io/jojolebarjos/knime-docker:caddy
+Container image: ghcr.io/jojolebarjos/knime-docker:renku-knime
 Default URL: /
-Port: 8888
+Port: 14500
 Mount Directory:
 Working Directory:
 UID:
