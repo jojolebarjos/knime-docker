@@ -18,7 +18,7 @@ RUN apt install -y debian-keyring debian-archive-keyring apt-transport-https cur
 
 # --- KNIME-specific
 
-RUN wget https://download.knime.org/analytics-platform/linux/knime_5.4.4.linux.gtk.x86_64.tar.gz -O /opt/knime.tar.gz && \
+RUN wget --no-verbose https://download.knime.org/analytics-platform/linux/knime_5.4.4.linux.gtk.x86_64.tar.gz -O /opt/knime.tar.gz && \
     mkdir -p /opt/knime && \
     tar -xzf /opt/knime.tar.gz -C /opt/knime --strip-components=1
 
