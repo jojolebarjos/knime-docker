@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y --fix-missing wget apt-transport-https ca-certificates software-properties-common && \
+    apt-get install -y --fix-missing apt-transport-https ca-certificates software-properties-common wget && \
     wget -O "/usr/share/keyrings/xpra.asc" https://xpra.org/xpra.asc && \
     wget -O "/etc/apt/sources.list.d/xpra.sources" https://raw.githubusercontent.com/Xpra-org/xpra/master/packaging/repos/jammy/xpra.sources && \
     apt-get update && \
@@ -27,4 +27,6 @@ WORKDIR /home/user
 
 EXPOSE 14500
 
-ENTRYPOINT ["xpra", "seamless", "--daemon=no", "--no-audio"]
+ENTRYPOINT  ["/usr/bin/tini", "--" ]
+
+CMD ["xpra", "seamless", "--daemon=no", "--mdns=no", "--http=yes", "--systemd-run=no", "--webcam=no", "--no-audio", "--printing=no", "--clipboard=yes", "--clipboard-direction=both", "--exit-with-children=no", "--notifications=no", "--bind-tcp=0.0.0.0:14500", "--start=xterm"]

@@ -44,3 +44,21 @@ GID:
 Command ENTRYPOINT:
 Command Arguments CMD:
 ```
+
+...
+
+1. Log into renkulab.io (or just check that you have already logged in)
+2. Go here: https://renkulab.io/swagger/#/session_launchers (scroll down to session launchers)
+3. Use the `GET` request on `/session_launchers` and in the list find the one you want to change (there is no better way right now unforntunately)
+4. Take the launcher id from the session launcher in the list from step 3 and use it in the step below
+5. Use the `PATCH` request of `/sessions_launchers/{launcher_id}` with the following payload:
+```json
+{
+  "environment": {
+    "strip_path_prefix": true
+  }
+}
+```
+
+TODO fix my image, as it does not start correctly
+https://gitlab.com/olevski/xpra-test
