@@ -41,8 +41,8 @@ COPY knime.desktop /usr/share/applications/knime.desktop
 RUN apt-get update && apt-get install -y --no-install-recommends desktop-file-utils && \
     chmod 644 /usr/share/applications/knime.desktop && \
     update-desktop-database
-    
-RUN install -m 755 -o user -g user /usr/share/applications/knime.desktop /home/user/Desktop/knime.desktop
+
+# RUN install -m 755 -o user -g user /usr/share/applications/knime.desktop /home/user/Desktop/knime.desktop
 
 USER user
 WORKDIR /home/user
