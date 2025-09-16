@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends desktop-file-ut
     chmod 644 /usr/share/applications/knime.desktop && \
     update-desktop-database
 
-# RUN install -m 755 -o user -g user /usr/share/applications/knime.desktop /home/user/Desktop/knime.desktop
+RUN ln -s /opt/knime/knime /usr/local/bin/knime
 
 USER user
 WORKDIR /home/user
