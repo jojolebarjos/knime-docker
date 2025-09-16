@@ -37,12 +37,6 @@ RUN useradd -m -s /bin/bash user
 # Give user ownership of the KNIME installation
 RUN chown -R user:user /opt/knime
 
-# If knime.desktop is in your build context
-COPY knime.desktop /usr/share/applications/knime.desktop
-RUN apt-get update && apt-get install -y --no-install-recommends desktop-file-utils && \
-    chmod 644 /usr/share/applications/knime.desktop && \
-    update-desktop-database
-
 RUN ln -s /opt/knime/knime /usr/local/bin/knime
 
 USER user
