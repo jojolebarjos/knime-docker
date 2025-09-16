@@ -34,6 +34,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 RUN useradd -m -s /bin/bash user
 
+# Give user ownership of the KNIME installation
 RUN chown -R user:user /opt/knime
 
 # If knime.desktop is in your build context
