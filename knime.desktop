@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=KNIME Analytics Platform
+Comment=KNIME Data Analytics Software
+Exec=/opt/knime/knime
+Icon=/opt/knime/icon.xpm
+Terminal=false
+Categories=Development;Science;
+StartupNotify=true
